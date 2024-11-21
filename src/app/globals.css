@@ -2,26 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* slick-carousel */
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+@font-face {
+  font-family: TruliaSans;
+  src: url(https://www.trulia.com/images/fonts/TruliaSans_20190627/TruliaSansWeb-Regular.woff2)
+      format("woff2"),
+    url(https://www.trulia.com/images/fonts/TruliaSans_20190627/TruliaSansWeb-Regular.woff)
+      format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: TruliaSans;
+  src: url(https://www.trulia.com/images/fonts/TruliaSans_20190627/TruliaSansWeb-Bold.woff2)
+      format("woff2"),
+    url(https://www.trulia.com/images/fonts/TruliaSans_20190627/TruliaSansWeb-Bold.woff)
+      format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Trulia-Fallback;
+  size-adjust: 102%;
+  ascent-override: 90%;
+  descent-override: 30%;
+  src: local("Arial");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body,
+html {
+  margin: 0;
+  padding: 0;
+  color: #3b4144;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.1px;
+  background-color: #fff;
+  font-family: "TruliaSans", "Trulia-Fallback", sans-serif;
 }
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  box-sizing: border-box;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+::-moz-focus-inner {
+  border: 0;
+}
+a {
+  color: var(--colors-tarzana-700);
+  transition: box-shadow 0.1s ease, border-color 0.1s ease;
+}
+a:hover {
+  color: var(--colors-tarzana-900);
 }
