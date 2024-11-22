@@ -1,9 +1,28 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchModal from "./SearchModal";
+import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeButton, setActiveButton] = useState("Buy");
+  const router = useRouter();
+
+  const handleButtonClick = (button) => {
+    setActiveButton(button);
+    if (button === "Rent") {
+      router.push("/rent");
+    } else {
+      router.push("/");
+    }
+  };
+
+  useEffect(() => {
+    if (window.location.pathname === "/rent") {
+      setActiveButton("Rent");
+    }
+  }, []);
+
   return (
     <section
       className="bg-cover bg-center mt-1 h-[65vh] md:h-[73vh] rounded-lg overflow-hidden "
@@ -18,13 +37,34 @@ const HeroSection = () => {
             you will love to live
           </h1>
           <div className="w-fit mt-12 flex justify-center bg-[rgba(59,65,68,.6)] rounded-lg m-auto">
-            <button className="text-[20px] px-6 py-2 text-white  rounded-lg font-medium hover:bg-gray-100 hover:text-[#007882] focus:outline-none leading-none">
+            <button
+              className={`text-[20px] px-6 py-2 rounded-lg font-medium leading-none focus:outline-none ${
+                activeButton === "Buy"
+                  ? "bg-gray-100 text-[#007882]"
+                  : "text-white hover:bg-gray-100 hover:text-[#007882]"
+              }`}
+              onClick={() => handleButtonClick("Buy")}
+            >
               Buy
             </button>
-            <button className="text-[20px] px-6 py-2 text-[#007882] bg-white rounded-lg font-medium hover:bg-gray-100 focus:outline-none leading-none">
+            <button
+              className={`text-[20px] px-6 py-2 rounded-lg font-medium leading-none focus:outline-none ${
+                activeButton === "Rent"
+                  ? "bg-gray-100 text-[#007882]"
+                  : "text-white hover:bg-gray-100 hover:text-[#007882]"
+              }`}
+              onClick={() => handleButtonClick("Rent")}
+            >
               Rent
             </button>
-            <button className="text-[20px] px-6 py-2 text-white  rounded-lg font-medium hover:bg-gray-100 hover:text-[#007882] focus:outline-none leading-none">
+            <button
+              className={`text-[20px] px-6 py-2 rounded-lg font-medium leading-none focus:outline-none ${
+                activeButton === "Sold"
+                  ? "bg-gray-100 text-[#007882]"
+                  : "text-white hover:bg-gray-100 hover:text-[#007882]"
+              }`}
+              onClick={() => handleButtonClick("Sold")}
+            >
               Sold
             </button>
           </div>

@@ -5,7 +5,7 @@ import SearchModal from "./SearchModal";
 const Checkout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <section className="bg-center mt-1  rounded-lg pb-[150px]">
+    <section className="bg-center mt-1  rounded-lg pb-[100px]">
       <div className=" h-full flex items-center justify-center text-white">
         <div className="text-center w-[60vw] ">
           <h3 className="text-xl text-black font-bold mb-6 text-center max-w-[1000px]">

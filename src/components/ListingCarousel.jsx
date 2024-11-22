@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -83,7 +83,9 @@ const data = [
     name: "San Francisco",
   },
 ];
-function CustomArrow({ onClick, direction }) {
+function CustomArrow({ onClick, direction, isHidden }) {
+  if (isHidden) return null;
+
   return (
     <div
       onClick={onClick}
@@ -96,24 +98,31 @@ function CustomArrow({ onClick, direction }) {
       }}
     >
       {direction === "next" ? (
-        <span className="material-icons ">&#8250;</span>
+        <span className="material-icons">&#8250;</span>
       ) : (
-        <span className="material-icons ">&#8249;</span>
+        <span className="material-icons">&#8249;</span>
       )}
     </div>
   );
 }
-
 const ListingCarousel = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const settings = {
     className: "slider variable-width",
     dots: false,
     infinite: false,
     slidesToShow: 1,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     variableWidth: true,
-    nextArrow: <CustomArrow direction="next" />,
-    prevArrow: <CustomArrow direction="prev" />,
+    beforeChange: (current, next) => setCurrentSlide(next),
+    nextArrow: (
+      <CustomArrow
+        direction="next"
+        isHidden={currentSlide >= data.length - 1}
+      />
+    ),
+    prevArrow: <CustomArrow direction="prev" isHidden={currentSlide <= 0} />,
   };
 
   return (

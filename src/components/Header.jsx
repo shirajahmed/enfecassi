@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/solid";
+import Link from "next/link";
 
 const navData = [
   {
@@ -57,10 +58,11 @@ const Header = () => {
     <header className="bg-white ">
       <div className=" w-full px-0 flex items-center justify-between py-0">
         <div className="flex items-center justify-start ml-0">
-          <div className="text-[24px] pr-6 py-4 font-bold text-[#000]">
-            Logo
-          </div>
-
+          <Link href="/">
+            <div className="text-[24px] pr-6 py-4 font-bold text-[#000]">
+              Logo
+            </div>
+          </Link>
           {/* Laptop Menu */}
           <nav className="hidden md:flex items-center space-x-6">
             <a
@@ -70,53 +72,44 @@ const Header = () => {
               Buy
             </a>
 
-            <div className="relative">
-              <button
-                onClick={() => setDropdownRentOpen(!isDropdownRentOpen)}
-                className="text-[#3b4144] hover:bg-[#407680] hover:text-white px-4 py-2 rounded-md font-bold"
-              >
+            <div className="relative group">
+              <button className="text-[#3b4144] hover:bg-[#407680] hover:text-white px-4 py-2 rounded-md font-bold">
                 Rent
               </button>
-              {isDropdownRentOpen && (
-                <div className="absolute top-full mt-2 bg-white shadow-md rounded-md w-40">
-                  <a
-                    href="#"
-                    className="block px-3 py-2 hover:bg-gray-100 hover:underline font-size-[15px] border-b last:border-0"
-                  >
-                    Post A Rental Listing
-                  </a>
-                </div>
-              )}
+              <div className="absolute top-full mt-0 bg-white shadow-md rounded-md w-fit opacity-0 group-hover:opacity-100 group-hover:block hidden">
+                <a
+                  href="#"
+                  className="block px-3 py-2 whitespace-nowrap hover:bg-gray-100 hover:underline font-size-[14px] border-b last:border-0"
+                >
+                  Post A Rental Listing
+                </a>
+              </div>
             </div>
-            <div className="relative">
-              <button
-                onClick={() => setDropdownOpen(!isDropdownOpen)}
-                className="text-[#3b4144] hover:bg-[#407680] hover:text-white px-4 py-2 rounded-md font-bold"
-              >
+
+            <div className="relative group">
+              <button className="text-[#3b4144] hover:bg-[#407680] hover:text-white px-4 py-2 rounded-md font-bold">
                 Mortgage
               </button>
-              {isDropdownOpen && (
-                <div className="absolute top-full mt-2 bg-white shadow-md rounded-md w-40">
-                  <a
-                    href="#"
-                    className="block px-3 py-2 hover:bg-gray-100 hover:underline font-size-[15px] border-b last:border-0"
-                  >
-                    Post A Rental Listing
-                  </a>
-                  <a
-                    href="#"
-                    className="block px-3 py-2 hover:bg-gray-100 hover:underline font-size-[15px] border-b last:border-0"
-                  >
-                    Option 2
-                  </a>
-                  <a
-                    href="#"
-                    className="block px-3 py-2 hover:bg-gray-100 hover:underline font-size-[15px]"
-                  >
-                    Option 3
-                  </a>
-                </div>
-              )}
+              <div className="absolute top-full mt-0 bg-white shadow-md rounded-md w-fit opacity-0 group-hover:opacity-100 group-hover:block hidden">
+                <a
+                  href="#"
+                  className="block whitespace-nowrap px-3 py-2 hover:bg-gray-100 hover:underline font-size-[14px] border-b last:border-0"
+                >
+                  Post A Rental Listing
+                </a>
+                <a
+                  href="#"
+                  className="block px-3 whitespace-nowrap py-2 hover:bg-gray-100 hover:underline font-size-[14px] border-b last:border-0"
+                >
+                  Get Pre Qulified
+                </a>
+                <a
+                  href="#"
+                  className="block px-3 whitespace-nowrap py-2 hover:bg-gray-100 hover:underline font-size-[14px]"
+                >
+                  Option 3
+                </a>
+              </div>
             </div>
           </nav>
         </div>
