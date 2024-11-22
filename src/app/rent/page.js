@@ -1,6 +1,6 @@
 import Explore from "@/components/Explore";
 
-import Listing from "@/components/Listing";
+// import Listing from "@/components/Listing";
 import Overview from "@/components/Overview";
 import Checkout from "@/components/Checkout";
 import HeroSection from "@/components/HeroSection";
@@ -87,7 +87,7 @@ export default function Home() {
     <div>
       <HeroSection />
 
-      <Listing data={data} title={"Newly listed homes in San Francisco"} />
+      {/* <Listing data={data} title={"Newly listed homes in San Francisco"} /> */}
       <Overview />
       <Explore />
       <Checkout />

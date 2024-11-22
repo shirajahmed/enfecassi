@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FlagIcon, HeartIcon } from "@heroicons/react/solid";
-import SignupModal from "./SignupModal";
+// import SignupModal from "./SignupModal";
 
 function CustomArrow({ onClick, direction, isHidden }) {
   if (isHidden) return null;
@@ -135,7 +135,7 @@ const ListingCarousel = ({ data }) => {
         ))}
       </Slider>
 
-      <SignupModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+      {/* <SignupModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} /> */}
     </div>
   );
 };
