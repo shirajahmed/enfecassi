@@ -6,83 +6,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FlagIcon, HeartIcon } from "@heroicons/react/solid";
+import SignupModal from "./SignupModal";
 
-const data = [
-  {
-    newTag: "new",
-    openTag: "open",
-    imgUrl:
-      "https://www.trulia.com/pictures/thumbs_3/zillowstatic/fp/1e0fb38ce7f743ef145e9de3902c4b82-full.webp",
-    price: 25000,
-    address: "169 Vienna St",
-    city: "San Francisco, CA 94112",
-    additional: "Jeffrey A. Salgado DRE #01501886, Compass",
-  },
-  {
-    newTag: "new - 1 hr ago",
-    openTag: "",
-    imgUrl:
-      "https://www.trulia.com/pictures/thumbs_3/zillowstatic/fp/46b9ccf9f8a0787531e627b60fad34b1-full.webp",
-    price: 30000,
-    address: "123 Market St",
-    city: "San Francisco, CA 94105",
-    additional: "John D. Realtor DRE #02020202, Compass",
-  },
-  {
-    newTag: "sale",
-    openTag: "open sat, 1:43 pm",
-    imgUrl:
-      "https://www.trulia.com/pictures/thumbs_3/zillowstatic/fp/d2d1281c651069224461b9743f96c5e6-full.webp",
-    price: 45000,
-    address: "456 Mission Blvd",
-    city: "San Francisco, CA 94103",
-    additional: "Sarah T. DRE #01010101, Realty Group",
-  },
-  {
-    newTag: "new",
-    openTag: "open",
-    imgUrl:
-      "https://www.trulia.com/pictures/thumbs_3/zillowstatic/fp/1e0fb38ce7f743ef145e9de3902c4b82-full.webp",
-    price: 25000,
-    address: "169 Vienna St",
-    city: "San Francisco, CA 94112",
-    additional: "Jeffrey A. Salgado DRE #01501886, Compass",
-  },
-  {
-    newTag: "sale",
-    openTag: "open sat, 1:43 pm",
-    imgUrl:
-      "https://www.trulia.com/pictures/thumbs_3/zillowstatic/fp/d2d1281c651069224461b9743f96c5e6-full.webp",
-    price: 45000,
-    address: "456 Mission Blvd",
-    city: "San Francisco, CA 94103",
-    additional: "Sarah T. DRE #01010101, Realty Group",
-  },
-  {
-    newTag: "new - 1 hr ago",
-    openTag: "",
-    imgUrl:
-      "https://www.trulia.com/pictures/thumbs_3/zillowstatic/fp/46b9ccf9f8a0787531e627b60fad34b1-full.webp",
-    price: 30000,
-    address: "123 Market St",
-    city: "San Francisco, CA 94105",
-    additional: "John D. Realtor DRE #02020202, Compass",
-  },
-  {
-    newTag: "new - 1 hr ago",
-    openTag: "",
-    imgUrl:
-      "https://www.trulia.com/pictures/thumbs_3/zillowstatic/fp/46b9ccf9f8a0787531e627b60fad34b1-full.webp",
-    price: 30000,
-    address: "123 Market St",
-    city: "San Francisco, CA 94105",
-    additional: "John D. Realtor DRE #02020202, Compass",
-  },
-
-  {
-    name: "San Francisco",
-  },
-];
 function CustomArrow({ onClick, direction, isHidden }) {
   if (isHidden) return null;
 
@@ -105,8 +30,9 @@ function CustomArrow({ onClick, direction, isHidden }) {
     </div>
   );
 }
-const ListingCarousel = () => {
+const ListingCarousel = ({ data }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const settings = {
     className: "slider variable-width",
@@ -133,7 +59,6 @@ const ListingCarousel = () => {
             key={index}
             className="w-[220px] cursor-pointer p-3 bg-white rounded-lg"
           >
-            {/* Image Section */}
             <div className="relative w-[220px] h-[150px]  flex items-center justify-center">
               {item.imgUrl ? (
                 <img
@@ -154,7 +79,6 @@ const ListingCarousel = () => {
                 </div>
               )}
 
-              {/* Tags */}
               {(item.newTag || item.openTag) && (
                 <div className="absolute top-2 left-2 flex space-x-2">
                   {item.newTag && (
@@ -170,9 +94,11 @@ const ListingCarousel = () => {
                 </div>
               )}
 
-              {/* Wishlist Icon */}
               {item.price && (
-                <div className="absolute top-2 right-2">
+                <div
+                  className="absolute top-2 right-2"
+                  onClick={() => setModalOpen(true)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -191,7 +117,6 @@ const ListingCarousel = () => {
               )}
             </div>
 
-            {/* Details Section */}
             {item.price && (
               <div className="mt-4 w-[220px]">
                 <p className="text-[20px] font-semibold">
@@ -209,6 +134,8 @@ const ListingCarousel = () => {
           </div>
         ))}
       </Slider>
+
+      <SignupModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 };
