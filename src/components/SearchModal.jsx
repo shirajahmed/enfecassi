@@ -27,7 +27,6 @@ const SearchModal = ({ isOpen, onClose }) => {
     }
   }, [searchTerm]);
 
-  // Close dropdown if clicked outside
   useEffect(() => {
     setSearchTerm("");
     const handleClickOutside = (event) => {
@@ -45,11 +44,23 @@ const SearchModal = ({ isOpen, onClose }) => {
     };
   }, [isOpen, onClose]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   return (
     isOpen && (
       <div
         ref={modalRef}
-        className="absolute z-500 top-[-10px] left-1/2 transform -translate-x-1/2 w-[60%] bg-white rounded-lg border border-gray-300 shadow-lg"
+        className="md:absolute fixed md:top-[-10px] md:left-1/2 md:transform md:-translate-x-1/2 w-full h-[60vh] md:w-[600px] bg-white rounded-lg border border-gray-300 shadow-lg md:shadow-lg fixed top-0 left-0 z-50"
       >
         <div className="p-0">
           <div className="flex items-center justify-between px-1 pt-1 mb-1 border-b last:border-0">
@@ -67,7 +78,7 @@ const SearchModal = ({ isOpen, onClose }) => {
               Cancel
             </button>
           </div>
-          <div className="max-h-[200px] overflow-y-auto">
+          <div className="max-h-[60vh] overflow-y-auto">
             <ul>
               <li className="text-[#007882] text-[15px] flex items-center py-2 px-4 hover:bg-gray-100 cursor-pointer border-b last:border-0">
                 <span className="mr-2">

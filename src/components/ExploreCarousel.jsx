@@ -1,95 +1,14 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const data = [
-  {
-    type: "image",
-    address: "Atlanta, GA",
-    linkur: "https://randomurl1.com",
-    imageUrl:
-      "https://media-cdn.trulia-local.com/neighborhood-media-service-prod/ca/oakland/longfellow/570-ca_sf_longfellow_268264_0059_500x_cfit.jpg",
-  },
-  {
-    type: "image",
-    address: "Miami, FL",
-    linkur: "https://randomurl2.com",
-    imageUrl:
-      "https://media-cdn.trulia-local.com/neighborhood-media-service-prod/ca/oakland/longfellow/570-ca_sf_longfellow_268264_0059_500x_cfit.jpg",
-  },
-  {
-    type: "review",
-    address: "Scottsdale, AZ",
-    linkur: "",
-    imageUrl: "",
-    name: "Shiraj",
-    message:
-      "I just moved to the neighborhood 2 years ago and love it! It's a great mix of families, seniors and everyone feels welcome.",
-  },
-  {
-    type: "image",
-    address: "Chicago, IL",
-    linkur: "https://randomurl3.com",
-    imageUrl:
-      "https://media-cdn.trulia-local.com/neighborhood-media-service-prod/ca/carlsbad/rancho-la-costa/2501-ca_sd_rancho_la_costa_229306_162_500x_cfit.jpg",
-  },
-  {
-    type: "image",
-    address: "Los Angeles, CA",
-    linkur: "https://randomurl4.com",
-    imageUrl: "https://randomimage4.com",
-  },
-  {
-    type: "image",
-    address: "New York, NY",
-    linkur: "https://randomurl5.com",
-    imageUrl:
-      "https://media-cdn.trulia-local.com/neighborhood-media-service-prod/ga/atlanta/downtown/1935-ga_atl_downtown_82792_048_500x_cfit.jpg",
-  },
-  {
-    type: "review",
-    address: "Dallas, TX",
-    linkur: "",
-    imageUrl: "",
-    name: "John",
-    message:
-      "A wonderful neighborhood! It's peaceful, and there are lots of parks for the kids to play.",
-  },
+function CustomArrow({ onClick, direction, isHidden }) {
+  if (isHidden) return null;
 
-  {
-    type: "image",
-    address: "Seattle, WA",
-    linkur: "https://randomurl6.com",
-    imageUrl: "https://randomimage6.com",
-  },
-  {
-    type: "image",
-    address: "San Francisco, CA",
-    linkur: "https://randomurl7.com",
-    imageUrl: "https://randomimage7.com",
-  },
-  {
-    type: "review",
-    address: "Houston, TX",
-    linkur: "",
-    imageUrl: "",
-    name: "Emily",
-    message:
-      "The community is fantastic. Everyone is so friendly, and there's a real sense of safety.",
-  },
-  {
-    type: "image",
-    address: "Boston, MA",
-    linkur: "https://randomurl8.com",
-    imageUrl: "https://randomimage8.com",
-  },
-];
-
-function CustomArrow({ onClick, direction }) {
   return (
     <div
       onClick={onClick}
@@ -102,15 +21,16 @@ function CustomArrow({ onClick, direction }) {
       }}
     >
       {direction === "next" ? (
-        <span className="material-icons ">&#8250;</span>
+        <span className="material-icons">&#8250;</span>
       ) : (
-        <span className="material-icons ">&#8249;</span>
+        <span className="material-icons">&#8249;</span>
       )}
     </div>
   );
 }
 
-const ExploreCarousel = () => {
+const ExploreCarousel = ({ data }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const settings = {
     className: "slider variable-width",
     dots: false,
@@ -118,8 +38,14 @@ const ExploreCarousel = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
-    nextArrow: <CustomArrow direction="next" />,
-    prevArrow: <CustomArrow direction="prev" />,
+    beforeChange: (current, next) => setCurrentSlide(next),
+    nextArrow: (
+      <CustomArrow
+        direction="next"
+        isHidden={currentSlide >= data.length - 1}
+      />
+    ),
+    prevArrow: <CustomArrow direction="prev" isHidden={currentSlide <= 0} />,
   };
 
   return (

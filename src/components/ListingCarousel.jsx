@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FlagIcon, HeartIcon } from "@heroicons/react/solid";
+import { FlagIcon } from "@heroicons/react/solid";
 import SignupModal from "./SignupModal";
 
 function CustomArrow({ onClick, direction, isHidden }) {

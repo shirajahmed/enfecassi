@@ -16,11 +16,11 @@ const Checkout = () => {
             <div className="flex items-center w-full max-w-lg mx-auto px-4 pb-4">
               <input
                 type="text"
-                className="w-100 flex-grow px-4 py-2 rounded-l-md border h-[60px] text-[20px] border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#007882] focus:border-[#007882]"
+                className="w-[72%] flex-grow px-4 py-2 rounded-l-md border h-[60px] text-[20px] border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#007882] focus:border-[#007882]"
                 placeholder="San Francisco, CA"
                 onClick={() => setIsModalOpen(true)}
               />
-              <button className=" p-3 bg-red-500 text-white h-[60px] px-4 rounded-r-md hover:bg-red-600 focus:outline-none">
+              <button className="w-[25%] md:w-auto p-3 bg-red-500 text-white h-[60px] px-4 rounded-r-md hover:bg-red-600 focus:outline-none">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
