@@ -7,7 +7,7 @@ const SignupModal = ({ isOpen, onClose }) => {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
       onClick={onClose}
     >
-      {/* <div
+      <div
         className="relative w-full max-w-[375px] p-6 bg-white rounded-lg shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
@@ -51,7 +51,7 @@ const SignupModal = ({ isOpen, onClose }) => {
         </button>
 
         <p className="mt-4 text-sm text-center text-gray-500">
-          I accept Trulia's{" "}
+          I accept Trulias{" "}
           <a href="#" className="text-blue-500 underline">
             Terms of Use
           </a>{" "}
@@ -61,7 +61,7 @@ const SignupModal = ({ isOpen, onClose }) => {
           </a>
           .
         </p>
-      </div> */}
+      </div>
     </div>
   );
 };
