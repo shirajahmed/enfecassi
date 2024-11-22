@@ -1,8 +1,7 @@
-import { useState } from "react";
+"use client";
 
-export default function SignupModal({ isOpen, onClose }) {
+const SignupModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
-
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
@@ -65,4 +64,6 @@ export default function SignupModal({ isOpen, onClose }) {
       </div>
     </div>
   );
-}
+};
+
+export default SignupModal;
