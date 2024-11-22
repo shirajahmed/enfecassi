@@ -60,7 +60,7 @@ const SearchModal = ({ isOpen, onClose }) => {
     isOpen && (
       <div
         ref={modalRef}
-        className="md:absolute fixed md:top-[-10px] md:left-1/2 md:transform md:-translate-x-1/2 w-full h-[60vh] md:w-[600px] bg-white rounded-lg border border-gray-300 shadow-lg md:shadow-lg fixed top-0 left-0 z-50"
+        className="md:absolute fixed md:top-[-10px] md:left-1/2 md:transform md:-translate-x-1/2 w-full h-[60vh] md:w-[600px] bg-white rounded-lg border border-gray-300 shadow-lg md:shadow-lg fixed top-0 left-0 z-[100]"
       >
         <div className="p-0">
           <div className="flex items-center justify-between px-1 pt-1 mb-1 border-b last:border-0">

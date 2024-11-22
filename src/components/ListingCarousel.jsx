@@ -41,6 +41,7 @@ const ListingCarousel = ({ data }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
+    initialSlide: 0,
     beforeChange: (current, next) => setCurrentSlide(next),
     nextArrow: (
       <CustomArrow

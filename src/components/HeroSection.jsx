@@ -25,7 +25,7 @@ const HeroSection = () => {
 
   return (
     <section
-      className="bg-cover bg-center mt-1 h-[65vh] md:h-[73vh] rounded-lg overflow-hidden "
+      className="bg-cover bg-center mt-1 h-[65vh] md:h-[73vh] rounded-lg "
       style={{
         backgroundImage: `url('/hero.webp')`,
       }}

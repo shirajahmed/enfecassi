@@ -34,7 +34,7 @@ const ExploreCarousel = ({ data }) => {
   const settings = {
     className: "slider variable-width",
     dots: false,
-    infinite: false,
+    infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
